@@ -925,10 +925,10 @@ public class MediaService extends Service {
                 }
 
                 if (!stop) {
-                    startProxy();
-                    // String urlEn = HttpUtil.urlEncode(url);
-                    String urlEn = url;
-                    urlEn = mProxy.getProxyURL(urlEn);
+//                    startProxy();
+                    String urlEn = HttpUtil.urlEncode(url);
+//                    String urlEn = url;
+//                    urlEn = mProxy.getProxyURL(urlEn);
                     mPlayer.setDataSource(urlEn);
                 }
                 

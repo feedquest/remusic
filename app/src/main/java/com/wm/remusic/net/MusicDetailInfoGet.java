@@ -22,8 +22,9 @@ public class MusicDetailInfoGet implements Runnable {
     public void run() {
         try {
             MusicDetailInfo info = null;
-            JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Song.songBaseInfo(id).trim()).get("result")
-                    .getAsJsonObject().get("items").getAsJsonArray().get(0).getAsJsonObject();
+//            JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Song.songBaseInfo(id).trim()).get("result")
+//                    .getAsJsonObject().get("items").getAsJsonArray().get(0).getAsJsonObject();
+            JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Song.songBaseInfo(id).trim()).get("items").getAsJsonArray().get(0).getAsJsonObject();
             info = MainApplication.gsonInstance().fromJson(jsonObject, MusicDetailInfo.class);
             synchronized (this) {
                 Log.e("arraylist", "size" + arrayList.size());

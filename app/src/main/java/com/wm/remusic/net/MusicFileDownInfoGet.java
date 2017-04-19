@@ -26,18 +26,17 @@ public class MusicFileDownInfoGet implements Runnable {
     @Override
     public void run() {
         try {
-            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id)).get("songurl")
-                    .getAsJsonObject().get("url").getAsJsonArray();
+            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id)).get("url").getAsJsonArray();
             int len = jsonArray.size();
 
             MusicFileDownInfo musicFileDownInfo = null;
             for (int i = len - 1; i > -1; i--) {
-                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
-                if (bit == downloadBit) {
+//                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
+//                if (bit == downloadBit) {
                     musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                } else if (bit < downloadBit && bit >= 64) {
-                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                }
+//                } else if (bit < downloadBit && bit >= 64) {
+//                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//                }
             }
 
             synchronized (this) {

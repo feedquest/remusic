@@ -32,21 +32,20 @@ public class Down {
             @Override
             protected MusicFileDownInfo doInBackground(final String... name) {
                 try {
-                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim()).get("songurl")
-                            .getAsJsonObject().get("url").getAsJsonArray();
+                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim()).get("url").getAsJsonArray();
                     int len = jsonArray.size();
 
                     int downloadBit = PreferencesUtility.getInstance(context).getDownMusicBit();
                     MusicFileDownInfo musicFileDownInfo;
                     for (int i = len - 1; i > -1; i--) {
-                        int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
-                        if (bit == downloadBit) {
+//                        int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
+//                        if (bit == downloadBit) {
                             musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
                             return musicFileDownInfo;
-                        } else if (bit < downloadBit && bit >= 64) {
-                            musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                            return musicFileDownInfo;
-                        }
+//                        } else if (bit < downloadBit && bit >= 64) {
+//                            musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//                            return musicFileDownInfo;
+//                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -76,24 +75,24 @@ public class Down {
     public static MusicFileDownInfo getUrl(final Context context, final String id) {
         MusicFileDownInfo musicFileDownInfo = null;
         try {
-            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim(), context, false).get("songurl")
-                    .getAsJsonObject().get("url").getAsJsonArray();
-            int len = jsonArray.size();
+            JsonObject list = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim(),context, false);
+            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim(), context, false).get("url").getAsJsonArray();
+//            int len = jsonArray.size();
             int downloadBit = 192;
 
-            for (int i = len - 1; i > -1; i--) {
-                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
-                if (bit == downloadBit) {
-                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//            for (int i = len - 1; i > -1; i--) {
+//                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
+//                if (bit == downloadBit) {
+                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(0), MusicFileDownInfo.class);
 
-                } else if (bit < downloadBit && bit >= 64) {
-                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                }
-            }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        } catch (JsonSyntaxException e) {
-            e.printStackTrace();
+//                } else if (bit < downloadBit && bit >= 64) {
+//                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//                }
+//            }
+//        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+//        } catch (JsonSyntaxException e) {
+//            e.printStackTrace();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -126,20 +125,21 @@ public class Down {
 
         @Override
         public void run() {
-            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim()).get("songurl")
-                    .getAsJsonObject().get("url").getAsJsonArray();
+//            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim()).get("songurl")
+//                    .getAsJsonObject().get("url").getAsJsonArray();
+            JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(id).trim()).get("url").getAsJsonArray();
             int len = jsonArray.size();
 
             int downloadBit = 128;
 
             for (int i = len - 1; i > -1; i--) {
-                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
-                if (bit == downloadBit) {
+//                int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
+//                if (bit == downloadBit) {
                     musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-
-                } else if (bit < downloadBit && bit >= 64) {
-                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                }
+//
+//                } else if (bit < downloadBit && bit >= 64) {
+//                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//                }
             }
         }
     }

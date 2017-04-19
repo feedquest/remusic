@@ -113,19 +113,18 @@ public class AddDownTask extends DialogFragment {
             int le = ids.length;
             for (int j = 0; j < le; j++) {
                 try {
-                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(ids[j]).trim()).get("songurl")
-                            .getAsJsonObject().get("url").getAsJsonArray();
+                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Song.songInfo(ids[j]).trim()).get("url").getAsJsonArray();
                     int len = jsonArray.size();
 
                     int downloadBit = PreferencesUtility.getInstance(mContext).getDownMusicBit();
                     MusicFileDownInfo musicFileDownInfo = null;
                     for (int i = len - 1; i > -1; i--) {
-                        int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
-                        if (bit == downloadBit) {
+//                        int bit = Integer.parseInt(jsonArray.get(i).getAsJsonObject().get("file_bitrate").toString());
+//                        if (bit == downloadBit) {
                             musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                        } else if (bit < downloadBit && bit >= 64) {
-                            musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
-                        }
+//                        } else if (bit < downloadBit && bit >= 64) {
+//                            musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
+//                        }
                     }
                     if (musicFileDownInfo != null) {
                         mList.add(musicFileDownInfo.getFile_link());

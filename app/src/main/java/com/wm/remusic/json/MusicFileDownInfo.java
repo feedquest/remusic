@@ -34,7 +34,7 @@ public class MusicFileDownInfo {
     private String file_extension;
     private int file_duration;
     private int can_see;
-    private boolean can_load;
+//    private boolean can_load;
     private int preload;
     private int file_bitrate;
     private String file_link;
@@ -121,13 +121,14 @@ public class MusicFileDownInfo {
         this.can_see = can_see;
     }
 
-    public boolean isCan_load() {
-        return can_load;
-    }
+//    public boolean isCan_load() {
+//        return can_load;
+//    }
+//
+//    public void setCan_load(boolean can_load) {
+//        this.can_load = can_load;
+//    }
 
-    public void setCan_load(boolean can_load) {
-        this.can_load = can_load;
-    }
 
     public int getPreload() {
         return preload;

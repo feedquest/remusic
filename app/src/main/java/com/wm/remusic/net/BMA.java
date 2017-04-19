@@ -7,6 +7,7 @@ public class BMA {
 
     public static final String FORMATE = "json";
     public static final String BASE = "http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.6.5.6&format=" + FORMATE;
+    public static final String BASE_FQ = "http://mp3.feedquest.com/apiversion1/api.php/";
 
     /**
      * 轮播音乐封面
@@ -15,9 +16,12 @@ public class BMA {
      * @return
      */
     public static String focusPic(int num) {
-        StringBuffer sb = new StringBuffer(BASE);
-        sb.append("&method=").append("baidu.ting.plaza.getFocusPic")
-                .append("&num=").append(num);
+//        StringBuffer sb = new StringBuffer(BASE);
+//        sb.append("&method=").append("baidu.ting.plaza.getFocusPic")
+//                .append("&num=").append(num);
+        StringBuffer sb = new StringBuffer(BASE_FQ);
+        sb.append("pic?").append("transform=1").append("&order=add_time,desc")
+                .append("&page=1,").append(num);
         return sb.toString();
     }
 
@@ -50,9 +54,12 @@ public class BMA {
          * @return
          */
         public static String albumInfo(String albumid) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.album.getAlbumInfo")
-                    .append("&album_id=").append(albumid);
+//            StringBuffer sb = new StringBuffer(BASE);
+//            sb.append("&method=").append("baidu.ting.album.getAlbumInfo")
+//                    .append("&album_id=").append(albumid);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+            sb.append("songlist?").append("transform=1").append("&order=title")
+                    .append("&filter=album_id,eq,").append(albumid);
             return sb.toString();
         }
     }
@@ -166,9 +173,12 @@ public class BMA {
          * @return
          */
         public static String songBaseInfo(String songid) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.song.baseInfos")
-                    .append("&song_id=").append(songid);
+//            StringBuffer sb = new StringBuffer(BASE);
+//            sb.append("&method=").append("baidu.ting.song.baseInfos")
+//                    .append("&song_id=").append(songid);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+            sb.append("items?").append("transform=1").append("&order=title")
+                    .append("&filter=song_id,eq,").append(songid);
             return sb.toString();
         }
 
@@ -192,12 +202,15 @@ public class BMA {
          * @return
          */
         public static String songInfo(String songid) {
-            StringBuffer sb = new StringBuffer(BASE);
-            String str = "songid=" + songid + "&ts=" + System.currentTimeMillis();
-            String e = AESTools.encrpty(str);
-            sb.append("&method=").append("baidu.ting.song.getInfos")
-                    .append("&").append(str)
-                    .append("&e=").append(e);
+//            StringBuffer sb = new StringBuffer(BASE);
+//            String str = "songid=" + songid + "&ts=" + System.currentTimeMillis();
+//            String e = AESTools.encrpty(str);
+//            sb.append("&method=").append("baidu.ting.song.getInfos")
+//                    .append("&").append(str)
+//                    .append("&e=").append(e);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+            sb.append("url?").append("transform=1").append("&page=1,1")
+                    .append("&filter=song_file_id,eq,").append(songid);
             return sb.toString();
         }
 
