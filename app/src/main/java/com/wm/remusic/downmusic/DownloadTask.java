@@ -15,6 +15,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
+import com.wm.remusic.net.HttpUtil;
 import com.wm.remusic.provider.DownFileStore;
 
 import java.io.BufferedInputStream;
@@ -153,7 +154,8 @@ public class DownloadTask implements Runnable {
         public Builder setDBEntity(DownloadDBEntity dbEntity) {
             this.dbEntity = dbEntity;
             downloadStatus = dbEntity.getDownloadStatus();
-            url = dbEntity.getUrl();
+//            url = dbEntity.getUrl();
+            url = HttpUtil.urlEncode(dbEntity.getUrl());
             id = dbEntity.getDownloadId();
             fileName = dbEntity.getFileName();
             art = dbEntity.getArtist();
