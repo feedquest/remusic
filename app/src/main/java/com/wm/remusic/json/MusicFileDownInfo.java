@@ -124,11 +124,10 @@ public class MusicFileDownInfo {
 //    public boolean isCan_load() {
 //        return can_load;
 //    }
-//
+
 //    public void setCan_load(boolean can_load) {
 //        this.can_load = can_load;
 //    }
-
 
     public int getPreload() {
         return preload;

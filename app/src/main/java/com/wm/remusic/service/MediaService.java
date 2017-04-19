@@ -969,6 +969,8 @@ public class MediaService extends Service {
                 url = null;
                 for (int i = 0; i < len; i++) {
                     url = array.get(i).getAsJsonObject().get("lrclink").getAsString();
+                    //PL
+                    url = HttpUtil.urlEncode(url);
                     if (url != null) {
                         L.D(D,TAG,"lrclink = " + url);
                         break;

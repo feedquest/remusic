@@ -127,7 +127,9 @@ public class AddDownTask extends DialogFragment {
 //                        }
                     }
                     if (musicFileDownInfo != null) {
-                        mList.add(musicFileDownInfo.getFile_link());
+//                        mList.add(musicFileDownInfo.getFile_link());
+                        mList.add(HttpUtil.urlEncode(musicFileDownInfo.getFile_link()));
+
                         size += musicFileDownInfo.getFile_size();
                     }
 

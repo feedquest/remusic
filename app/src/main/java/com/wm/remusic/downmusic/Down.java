@@ -62,7 +62,8 @@ public class Down {
                     i.putExtra("id", id);
                     i.putExtra("name", name);
                     i.putExtra("artist", artist);
-                    i.putExtra("url", musicFileDownInfo.getShow_link());
+//                    i.putExtra("url", musicFileDownInfo.getShow_link());
+                    i.putExtra("url", HttpUtil.urlEncode(musicFileDownInfo.getShow_link()));
                     i.setPackage(IConstants.PACKAGE);
                     context.startService(i);
                 }else {
@@ -89,10 +90,10 @@ public class Down {
 //                    musicFileDownInfo = MainApplication.gsonInstance().fromJson(jsonArray.get(i), MusicFileDownInfo.class);
 //                }
 //            }
-//        } catch (NumberFormatException e) {
-//            e.printStackTrace();
-//        } catch (JsonSyntaxException e) {
-//            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
