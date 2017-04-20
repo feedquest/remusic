@@ -113,7 +113,7 @@ public class AllPlaylistFragment extends AttachFragment {
                 return null;
             }
             //热门歌单
-            JsonArray pArray = result.get("content").getAsJsonArray();
+            JsonArray pArray = result.get("all_albums").getAsJsonArray();
             if (pArray == null) {
                 return null;
             }
@@ -147,7 +147,8 @@ public class AllPlaylistFragment extends AttachFragment {
                     return null;
                 }
                 //热门歌单
-                JsonArray pArray = result.get("content").getAsJsonArray();
+//                JsonArray pArray = result.get("content").getAsJsonArray();
+                JsonArray pArray = result.get("all_albums").getAsJsonArray();
                 if (pArray == null) {
                     return null;
                 }

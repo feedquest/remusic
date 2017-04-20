@@ -441,10 +441,12 @@ public class BMA {
          * @return
          */
         public static String geDan(int pageNo, int pageSize) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.diy.gedan")
-                    .append("&page_size=").append(pageSize)
-                    .append("&page_no=").append(pageNo);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.diy.gedan")
+//                    .append("&page_size=").append(pageSize)
+//                    .append("&page_no=").append(pageNo);
+            sb.append("all_albums?").append("transform=1").append("&order=update_time,desc")
+                    .append("&page=").append(pageNo).append(",").append(pageSize);
             return sb.toString();
         }
 
