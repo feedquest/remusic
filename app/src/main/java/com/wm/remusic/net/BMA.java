@@ -475,9 +475,11 @@ public class BMA {
          * @return
          */
         public static String geDanInfo(String listid) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.diy.gedanInfo")
-                    .append("&listid=").append(listid);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.diy.gedanInfo")
+//                    .append("&listid=").append(listid);
+            sb.append("gedan_info?").append("transform=1").append("&order=title")
+                    .append("&filter=album_id,eq,").append(listid);
             return sb.toString();
         }
     }
