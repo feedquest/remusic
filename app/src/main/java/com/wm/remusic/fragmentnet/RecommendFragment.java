@@ -159,13 +159,14 @@ public class RecommendFragment extends AttachFragment {
                 try {
                     JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
                             , mContext, isFromCache);
-                    JsonArray rray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
+                    JsonArray newAlbumArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_new?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_new").getAsJsonArray();
+                    JsonArray recommendArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_positioned?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_positioned").getAsJsonArray();
 
                     JsonObject object = list.get("result").getAsJsonObject();
                     JsonArray radioArray = object.get("radio").getAsJsonObject().get("result").getAsJsonArray();
-                    JsonArray recommendArray = object.get("diy").getAsJsonObject().get("result").getAsJsonArray();
+//                    JsonArray recommendArray = object.get("diy").getAsJsonObject().get("result").getAsJsonArray();
 //                    JsonArray newAlbumArray = object.get("mix_1").getAsJsonObject().get("result").getAsJsonArray();
-                    JsonArray newAlbumArray = rray;
+//                    JsonArray newAlbumArray = rrayNew;
 
                     for (int i = 0; i < 6; i++) {
                         mRecomendList.add(MainApplication.gsonInstance().fromJson(recommendArray.get(i), RecommendListRecommendInfo.class));
