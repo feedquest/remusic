@@ -275,6 +275,7 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
                     musicInfo.musicName = mList.get(i).getTitle();
                     musicInfo.albumName = mList.get(i).getAlbum_name();
                     musicInfo.artist = mList.get(i).getArtist_name();
+                    musicInfo.artistId = Integer.parseInt(mList.get(i).getArtist_id());
                     musicInfo.islocal = false;
                     musicInfo.albumId = Integer.parseInt(mList.get(i).getAlbum_id());
                     musicInfo.albumData = albumPath;

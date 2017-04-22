@@ -170,7 +170,7 @@ public class ArtistDetailActivity extends BaseActivity implements ObservableScro
             try {
                 JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Artist.artistSongList("", artistId, 0, 100));
 
-                JsonArray pArray = jsonObject.get("songlist").getAsJsonArray();
+                JsonArray pArray = jsonObject.get("gedan_info").getAsJsonArray();
                 musicCount = pArray.size();
 
                 for (int i = 0; i < musicCount; i++) {

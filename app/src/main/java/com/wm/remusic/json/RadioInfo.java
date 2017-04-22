@@ -17,6 +17,7 @@ public class RadioInfo {
     private String song_name;
     private String title;
     private String album_id;
+    private String artist_id;
     private String album_name;
     private String artist_name;
     private SongpicBean songpic;
@@ -51,6 +52,14 @@ public class RadioInfo {
 
     public void setAlbum_id(String album_id) {
         this.album_id = album_id;
+    }
+
+    public String getArtist_id() {
+        return artist_id;
+    }
+
+    public void setArtist_id(String artist_id) {
+        this.artist_id = artist_id;
     }
 
     public String getAlbum_name() {
