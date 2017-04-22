@@ -253,7 +253,7 @@ public class RecommendFragment extends AttachFragment {
 //                JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
 //                        , mContext, isFromCache);
 //                JsonArray rray = HttpUtil.getResposeJsonObject("http://192.168.1.101/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
-                JsonArray newAlbumArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
+                JsonArray newAlbumArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_new?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album_new").getAsJsonArray();
                 JsonArray recommendArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_positioned?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_positioned").getAsJsonArray();
                 JsonArray userArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_user_list?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_user_list").getAsJsonArray();
 
