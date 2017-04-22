@@ -152,7 +152,7 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.actionbar_back);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("歌单");
+        actionBar.setTitle("用户音频列表");
         toolbar.setPadding(0, mStatusSize, 0, 0);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,6 +273,8 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
                     MusicInfo musicInfo = new MusicInfo();
                     musicInfo.songId = Integer.parseInt(mList.get(i).getSong_id());
                     musicInfo.musicName = mList.get(i).getTitle();
+                    musicInfo.albumName = mList.get(i).getAlbum_name();
+                    musicInfo.artist = mList.get(i).getArtist_name();
                     musicInfo.islocal = false;
                     musicInfo.albumId = Integer.parseInt(mList.get(i).getAlbum_id());
                     musicInfo.albumData = albumPath;
@@ -410,7 +412,7 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar_background));
         }
         if (scrollY == 0) {
-            toolbar.setTitle("歌单");
+            toolbar.setTitle("用户音频列表");
             actionBar.setBackgroundDrawable(null);
         }
         if (scrollY > mFlexibleSpaceImageHeight - mActionBarSize - mStatusSize) {
