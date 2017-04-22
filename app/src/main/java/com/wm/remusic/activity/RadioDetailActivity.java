@@ -81,6 +81,7 @@ import java.util.HashMap;
 public class RadioDetailActivity extends BaseActivity implements ObservableScrollViewCallbacks {
 
     private String albumId;
+    private String channelId;
     private String albumPath, albumName, albumDes, artistName;
     private ArrayList<RadioInfo> mList = new ArrayList<>();
     private ArrayList<MusicInfo> adapterList = new ArrayList<>();
@@ -113,6 +114,7 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         if (getIntent().getExtras() != null) {
             albumId = getIntent().getStringExtra("albumid");
+            channelId = getIntent().getStringExtra("channelid");
             albumPath = getIntent().getStringExtra("albumart");
             albumName = getIntent().getStringExtra("albumname");
             albumDes = getIntent().getStringExtra("albumdetail");
@@ -258,8 +260,7 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
         @Override
         protected Void doInBackground(final Void... unused) {
             try {
-                JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Lebo.albumInfo(albumId, 10)).get("result").getAsJsonObject()
-                        .get("latest_song").getAsJsonArray();
+                JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Lebo.channelSongList(channelId)).get("gedan_info").getAsJsonArray();
 
                 musicCount = jsonArray.size();
 
@@ -271,9 +272,9 @@ public class RadioDetailActivity extends BaseActivity implements ObservableScrol
                 for (int i = 0; i < mList.size(); i++) {
                     MusicInfo musicInfo = new MusicInfo();
                     musicInfo.songId = Integer.parseInt(mList.get(i).getSong_id());
-                    musicInfo.musicName = mList.get(i).getSong_name();
+                    musicInfo.musicName = mList.get(i).getTitle();
                     musicInfo.islocal = false;
-                    musicInfo.albumId = Integer.parseInt(mList.get(i).getSong_duration());
+                    musicInfo.albumId = Integer.parseInt(mList.get(i).getAlbum_id());
                     musicInfo.albumData = albumPath;
                     adapterList.add(musicInfo);
                 }

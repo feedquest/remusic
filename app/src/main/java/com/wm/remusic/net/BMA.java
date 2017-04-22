@@ -340,13 +340,15 @@ public class BMA {
          * @return
          */
         public static String artistSongList(String tinguid, String artistid, int offset, int limit) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.artist.getSongList")
-                    .append("&order=2")
-                    .append("&tinguid=").append(tinguid)
-                    .append("&artistid=").append(artistid)
-                    .append("&offset=").append(offset)
-                    .append("&limits=").append(limit);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.artist.getSongList")
+//                    .append("&order=2")
+//                    .append("&tinguid=").append(tinguid)
+//                    .append("&artistid=").append(artistid)
+//                    .append("&offset=").append(offset)
+//                    .append("&limits=").append(limit);
+            sb.append("gedan_info?").append("transform=1").append("&order=add_time,desc")
+                    .append("&filter=artist_id,eq,").append(artistid);
             return sb.toString();
         }
 
@@ -358,10 +360,12 @@ public class BMA {
          * @return
          */
         public static String artistInfo(String tinguid, String artistid) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.artist.getinfo")
-                    .append("&tinguid=").append(tinguid)
-                    .append("&artistid=").append(artistid);
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.artist.getinfo")
+//                    .append("&tinguid=").append(tinguid)
+//                    .append("&artistid=").append(artistid);
+            sb.append("gedan_info?").append("transform=1").append("&order=add_time,desc")
+                    .append("&filter=artist_id,eq,").append(artistid);
             return sb.toString();
         }
     }
@@ -569,11 +573,13 @@ public class BMA {
          * @param num   数量
          * @return
          */
-        public static String channelSongList(String tagId, int num) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.lebo.channelSongList")
-                    .append("&tag_id=").append(tagId)
-                    .append("&num=").append(num);
+        public static String channelSongList(String channelid) {
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.lebo.channelSongList")
+//                    .append("&tag_id=").append(tagId)
+//                    .append("&num=").append(num);
+            sb.append("gedan_info?").append("transform=1").append("&order=add_time,desc")
+                    .append("&filter=uid,eq,").append(channelid).append("&page=1,50");
             return sb.toString();
         }
 

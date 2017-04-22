@@ -368,7 +368,7 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
             try {
                 JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.GeDan.geDanInfo(playlsitId + ""));
                 JsonArray pArray = jsonObject.get("gedan_info").getAsJsonArray();
-
+//PL this is the recommended list ont the home page.
                 mCollected = PlaylistInfo.getInstance(mContext).hasPlaylist(Long.parseLong(playlsitId));
 //                playlistDetail = jsonObject.get("desc").getAsString();
                 playlistDetail = "";
@@ -553,6 +553,7 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar_background));
         }
         if (scrollY == 0) {
+            //PL 首页推荐歌单点击后进入的页面
             toolbar.setTitle("歌单");
             actionBar.setBackgroundDrawable(null);
         }

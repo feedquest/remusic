@@ -64,11 +64,11 @@ public class RecommendListRadioInfo {
         this.type = type;
     }
 
-    public String getChannelid() {
+    public String getChannel_id() {
         return channelid;
     }
 
-    public void setChannelid(String channelid) {
+    public void setChannel_id(String channelid) {
         this.channelid = channelid;
     }
 

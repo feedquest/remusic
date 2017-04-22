@@ -168,7 +168,7 @@ public class ArtistDetailActivity extends BaseActivity implements ObservableScro
         @Override
         protected Boolean doInBackground(final Void... unused) {
             try {
-                JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Artist.artistSongList("", artistId, 0, 50));
+                JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Artist.artistSongList("", artistId, 0, 100));
 
                 JsonArray pArray = jsonObject.get("songlist").getAsJsonArray();
                 musicCount = pArray.size();

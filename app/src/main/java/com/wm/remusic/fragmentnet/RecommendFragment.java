@@ -157,13 +157,14 @@ public class RecommendFragment extends AttachFragment {
 
                 //推荐电台
                 try {
-                    JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
-                            , mContext, isFromCache);
+//                    JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
+//                            , mContext, isFromCache);
                     JsonArray newAlbumArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_new?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_new").getAsJsonArray();
                     JsonArray recommendArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_positioned?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_positioned").getAsJsonArray();
+                    JsonArray userArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_user_list?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_user_list").getAsJsonArray();
 
-                    JsonObject object = list.get("result").getAsJsonObject();
-                    JsonArray radioArray = object.get("radio").getAsJsonObject().get("result").getAsJsonArray();
+//                    JsonObject object = list.get("result").getAsJsonObject();
+//                    JsonArray radioArray = object.get("radio").getAsJsonObject().get("result").getAsJsonArray();
 //                    JsonArray recommendArray = object.get("diy").getAsJsonObject().get("result").getAsJsonArray();
 //                    JsonArray newAlbumArray = object.get("mix_1").getAsJsonObject().get("result").getAsJsonArray();
 //                    JsonArray newAlbumArray = rrayNew;
@@ -171,7 +172,7 @@ public class RecommendFragment extends AttachFragment {
                     for (int i = 0; i < 6; i++) {
                         mRecomendList.add(MainApplication.gsonInstance().fromJson(recommendArray.get(i), RecommendListRecommendInfo.class));
                         mNewAlbumsList.add(MainApplication.gsonInstance().fromJson(newAlbumArray.get(i), RecommendListNewAlbumInfo.class));
-                        mRadioList.add(MainApplication.gsonInstance().fromJson(radioArray.get(i), RecommendListRadioInfo.class));
+                        mRadioList.add(MainApplication.gsonInstance().fromJson(userArray.get(i), RecommendListRadioInfo.class));
                     }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
@@ -249,22 +250,24 @@ public class RecommendFragment extends AttachFragment {
 
             //推荐电台
             try {
-                JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
-                        , mContext, isFromCache);
+//                JsonObject list = HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.plaza.index&cuid=89CF1E1A06826F9AB95A34DC0F6AAA14"
+//                        , mContext, isFromCache);
 //                JsonArray rray = HttpUtil.getResposeJsonObject("http://192.168.1.101/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
-                JsonArray rray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
+                JsonArray newAlbumArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album?transform=1&order=type_id,desc&page=1,6", mContext, isFromCache).get("recommended_album").getAsJsonArray();
+                JsonArray recommendArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_album_positioned?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_album_positioned").getAsJsonArray();
+                JsonArray userArray = HttpUtil.getResposeJsonObject("http://mp3.feedquest.com/apiversion1/api.php/recommended_user_list?transform=1&order=add_time,desc&page=1,6", mContext, isFromCache).get("recommended_user_list").getAsJsonArray();
 
 
-                JsonObject object = list.get("result").getAsJsonObject();
-                JsonArray radioArray = object.get("radio").getAsJsonObject().get("result").getAsJsonArray();
-                JsonArray recommendArray = object.get("diy").getAsJsonObject().get("result").getAsJsonArray();
+//                JsonObject object = list.get("result").getAsJsonObject();
+//                JsonArray radioArray = object.get("radio").getAsJsonObject().get("result").getAsJsonArray();
+//                JsonArray recommendArray = object.get("diy").getAsJsonObject().get("result").getAsJsonArray();
 //                JsonArray newAlbumArray = object.get("mix_1").getAsJsonObject().get("result").getAsJsonArray();
-                JsonArray newAlbumArray = rray;
+//                JsonArray newAlbumArray = rray;
 
                 for (int i = 0; i < 6; i++) {
                     mRecomendList.add(MainApplication.gsonInstance().fromJson(recommendArray.get(i), RecommendListRecommendInfo.class));
                     mNewAlbumsList.add(MainApplication.gsonInstance().fromJson(newAlbumArray.get(i), RecommendListNewAlbumInfo.class));
-                    mRadioList.add(MainApplication.gsonInstance().fromJson(radioArray.get(i), RecommendListRadioInfo.class));
+                    mRadioList.add(MainApplication.gsonInstance().fromJson(userArray.get(i), RecommendListRadioInfo.class));
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -526,6 +529,7 @@ public class RecommendFragment extends AttachFragment {
 
                     Intent intent = new Intent(mContext, RadioDetailActivity.class);
                     intent.putExtra("albumid", info.getAlbum_id());
+                    intent.putExtra("channelid", info.getChannel_id());
                     intent.putExtra("albumart", info.getPic());
                     intent.putExtra("albumname", info.getTitle());
                     intent.putExtra("artistname", info.getDesc());
