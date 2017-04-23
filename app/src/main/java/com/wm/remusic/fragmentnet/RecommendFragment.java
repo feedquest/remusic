@@ -44,7 +44,7 @@ import com.wm.remusic.json.RecommendListRecommendInfo;
 import com.wm.remusic.net.HttpUtil;
 import com.wm.remusic.net.NetworkUtils;
 import com.wm.remusic.uitl.PreferencesUtility;
-import com.wm.remusic.widget.LoodView;
+//import com.wm.remusic.widget.LoodView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,7 +76,7 @@ public class RecommendFragment extends AttachFragment {
     private boolean isDayFirst;
     private ViewGroup mContent;
     private View mRecommendView;
-    private LoodView mLoodView;
+//    private LoodView mLoodView;
 
     public void setChanger(ChangeView changer) {
         mChangeView = changer;
@@ -89,8 +89,8 @@ public class RecommendFragment extends AttachFragment {
         mLayoutInflater = LayoutInflater.from(mContext);
         mRecommendView = mLayoutInflater.inflate(R.layout.recommend,container,false);
         String date = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + "";
-        TextView dailyText = (TextView) mRecommendView.findViewById(R.id.daily_text);
-        dailyText.setText(date);
+//        TextView dailyText = (TextView) mRecommendView.findViewById(R.id.daily_text);
+//        dailyText.setText(date);
         mItemLayout = (LinearLayout) mRecommendView.findViewById(R.id.item_change);
         mViewContent = (LinearLayout) mRecommendView.findViewById(R.id.recommend_layout);
         if(!PreferencesUtility.getInstance(mContext).isCurrentDayFirst(date)){
@@ -124,7 +124,7 @@ public class RecommendFragment extends AttachFragment {
             }
         });
 
-        mLoodView = (LoodView) mRecommendView.findViewById(R.id.loop_view);
+//        mLoodView = (LoodView) mRecommendView.findViewById(R.id.loop_view);
         if(!isDayFirst){
             mContent.addView(mRecommendView);
         }
@@ -135,10 +135,10 @@ public class RecommendFragment extends AttachFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-            if(mLoodView != null)
-            mLoodView.requestFocus();
-        }
+//        if(isVisibleToUser){
+//            if(mLoodView != null)
+//            mLoodView.requestFocus();
+//        }
     }
 
     public void requestData(){
@@ -371,7 +371,7 @@ public class RecommendFragment extends AttachFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mLoodView.onDestroy();
+//        mLoodView.onDestroy();
     }
 
     @Override
