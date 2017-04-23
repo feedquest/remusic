@@ -364,7 +364,7 @@ public class BMA {
 //            sb.append("&method=").append("baidu.ting.artist.getinfo")
 //                    .append("&tinguid=").append(tinguid)
 //                    .append("&artistid=").append(artistid);
-            sb.append("gedan_info?").append("transform=1").append("&order=add_time,desc")
+            sb.append("artist_info?").append("transform=1")
                     .append("&filter=artist_id,eq,").append(artistid);
             return sb.toString();
         }
@@ -611,9 +611,11 @@ public class BMA {
          *
          * @return
          */
-        public static String hotWord() {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.search.hot");
+        public static String hotWord(int limit) {
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.search.hot");
+            sb.append("jy_tag?").append("transform=1").append("&order=count,desc")
+                    .append("&filter=group,eq,1").append("&page=1,").append(limit);
             return sb.toString();
         }
 
@@ -657,12 +659,15 @@ public class BMA {
          * @return
          */
         public static String searchMerge(String query, int pageNo, int pageSize) {
-            StringBuffer sb = new StringBuffer(BASE);
-            sb.append("&method=").append("baidu.ting.search.merge")
-                    .append("&query=").append(encode(query))
-                    .append("&page_no=").append(pageNo)
-                    .append("&page_size=").append(pageSize)
-                    .append("&type=-1&data_source=0");
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.search.merge")
+//                    .append("&query=").append(encode(query))
+//                    .append("&page_no=").append(pageNo)
+//                    .append("&page_size=").append(pageSize)
+//                    .append("&type=-1&data_source=0");
+            sb.append("search_album?").append("transform=1").append("&order=title")
+                    .append("&filter=title,cs,").append(query).append("&page=").append(pageNo)
+                    .append(",").append(pageSize);
             return sb.toString();
         }
 

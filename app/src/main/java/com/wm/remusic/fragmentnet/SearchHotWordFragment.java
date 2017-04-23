@@ -76,9 +76,9 @@ public class SearchHotWordFragment extends AttachFragment implements View.OnClic
 
 
                 try {
-                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Search.hotWord(), mContext, isFromCache).get("result").getAsJsonArray();
-                    for (int i = 0; i < 10; i++) {
-                        texts[i] = jsonArray.get(i).getAsJsonObject().get("word").getAsString();
+                    JsonArray jsonArray = HttpUtil.getResposeJsonObject(BMA.Search.hotWord(10), mContext, isFromCache).get("jy_tag").getAsJsonArray();
+                    for (int i = 0; i < jsonArray.size(); i++) {
+                        texts[i] = jsonArray.get(i).getAsJsonObject().get("name").getAsString();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

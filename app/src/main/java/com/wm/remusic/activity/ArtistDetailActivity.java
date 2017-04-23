@@ -269,7 +269,8 @@ public class ArtistDetailActivity extends BaseActivity implements ObservableScro
             @Override
             public void run() {
                 JsonObject object = HttpUtil.getResposeJsonObject(BMA.Artist.artistInfo("", artistId));
-                artistInfo = MainApplication.gsonInstance().fromJson(object, ArtistInfo.class);
+                JsonArray pArray = object.get("artist_info").getAsJsonArray();
+                artistInfo = MainApplication.gsonInstance().fromJson(pArray.get(0), ArtistInfo.class);
                 if (artistInfo != null && artistInfo.getAvatar_s500() != null) {
                     artistPath = artistInfo.getAvatar_s500();
                     mHandler.post(new Runnable() {

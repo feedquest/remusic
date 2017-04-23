@@ -62,24 +62,25 @@ public class SearchTabPagerFragment extends AttachFragment {
             protected Void doInBackground(Void... params) {
                 try {
 
-                    JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(key, 1, 10)).get("result").getAsJsonObject();
-                    JsonObject songObject = jsonObject.get("song_info").getAsJsonObject();
-                    JsonArray songArray = songObject.get("song_list").getAsJsonArray();
-                    for (JsonElement o : songArray) {
-                        SearchSongInfo songInfo = MainApplication.gsonInstance().fromJson(o, SearchSongInfo.class);
-                        Log.e("songinfo", songInfo.getTitle());
-                        songResults.add(songInfo);
-                    }
+//                    JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(key, 1, 10)).get("result").getAsJsonObject();
+//                    JsonObject songObject = jsonObject.get("song_info").getAsJsonObject();
+//                    JsonArray songArray = songObject.get("song_list").getAsJsonArray();
+//                    for (JsonElement o : songArray) {
+//                        SearchSongInfo songInfo = MainApplication.gsonInstance().fromJson(o, SearchSongInfo.class);
+//                        Log.e("songinfo", songInfo.getTitle());
+//                        songResults.add(songInfo);
+//                    }
+//
+//                    JsonObject artistObject = jsonObject.get("artist_info").getAsJsonObject();
+//                    JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
+//                    for (JsonElement o : artistArray) {
+//                        SearchArtistInfo artistInfo = MainApplication.gsonInstance().fromJson(o, SearchArtistInfo.class);
+//                        artistResults.add(artistInfo);
+//                    }
 
-                    JsonObject artistObject = jsonObject.get("artist_info").getAsJsonObject();
-                    JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
-                    for (JsonElement o : artistArray) {
-                        SearchArtistInfo artistInfo = MainApplication.gsonInstance().fromJson(o, SearchArtistInfo.class);
-                        artistResults.add(artistInfo);
-                    }
-
-                    JsonObject albumObject = jsonObject.get("album_info").getAsJsonObject();
-                    JsonArray albumArray = albumObject.get("album_list").getAsJsonArray();
+//                    JsonObject albumObject = jsonObject.get("album_info").getAsJsonObject();
+//                    JsonArray albumArray = albumObject.get("album_list").getAsJsonArray();
+                    JsonArray albumArray = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(key, 1, 10)).get("search_album").getAsJsonArray();
                     for (JsonElement o : albumArray) {
                         SearchAlbumInfo albumInfo = MainApplication.gsonInstance().fromJson(o, SearchAlbumInfo.class);
                         albumResults.add(albumInfo);
