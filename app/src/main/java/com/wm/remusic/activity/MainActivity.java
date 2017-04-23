@@ -96,7 +96,7 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
         customViewPagerAdapter.addFragment(tabNetPagerFragment);
         customViewPagerAdapter.addFragment(mainFragment);
         customViewPager.setAdapter(customViewPagerAdapter);
-        customViewPager.setCurrentItem(0);
+        customViewPager.setCurrentItem(1);
         barmusic.setSelected(true);
         customViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
