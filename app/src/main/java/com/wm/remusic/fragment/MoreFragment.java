@@ -288,9 +288,9 @@ public class MoreFragment extends AttachDialogFragment {
                                         ArrayList<SearchArtistInfo> artistResults = new ArrayList<>();
                                         try {
 
-                                            JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.artist, 1, 50)).get("result").getAsJsonObject();
-                                            JsonObject artistObject = jsonObject.get("artist_info").getAsJsonObject();
-                                            JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
+                                            JsonArray artistArray = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.artist, 1, 50,"search_artist")).get("search_artist").getAsJsonArray();
+//                                            JsonObject artistOartistArraybject = jsonObject.get("artist_info").getAsJsonObject();
+//                                            JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
                                             for (JsonElement o : artistArray) {
                                                 SearchArtistInfo artistInfo = MainApplication.gsonInstance().fromJson(o, SearchArtistInfo.class);
                                                 artistResults.add(artistInfo);
@@ -337,9 +337,9 @@ public class MoreFragment extends AttachDialogFragment {
                                         ArrayList<SearchAlbumInfo> albumResults = new ArrayList<SearchAlbumInfo>();
                                         try {
 
-                                            JsonObject jsonObject = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.albumName, 1, 10)).get("result").getAsJsonObject();
-                                            JsonObject albumObject = jsonObject.get("album_info").getAsJsonObject();
-                                            JsonArray albumArray = albumObject.get("album_list").getAsJsonArray();
+                                            JsonArray albumArray = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.albumName, 1, 10,"search_album")).get("search_album").getAsJsonArray();
+//                                            JsonObject albumObject = jsonObject.get("album_info").getAsJsonObject();
+//                                            JsonArray albumArray = albumObject.get("album_list").getAsJsonArray();
                                             for (JsonElement o : albumArray) {
                                                 SearchAlbumInfo albumInfo = MainApplication.gsonInstance().fromJson(o, SearchAlbumInfo.class);
                                                 albumResults.add(albumInfo);

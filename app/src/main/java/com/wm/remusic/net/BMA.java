@@ -658,16 +658,30 @@ public class BMA {
          * @param query
          * @return
          */
-        public static String searchMerge(String query, int pageNo, int pageSize) {
+        public static String searchMerge(String query, int pageNo, int pageSize,String queryType) {
             StringBuffer sb = new StringBuffer(BASE_FQ);
 //            sb.append("&method=").append("baidu.ting.search.merge")
 //                    .append("&query=").append(encode(query))
 //                    .append("&page_no=").append(pageNo)
 //                    .append("&page_size=").append(pageSize)
 //                    .append("&type=-1&data_source=0");
-            sb.append("search_album?").append("transform=1").append("&order=title")
-                    .append("&filter=title,cs,").append(query).append("&page=").append(pageNo)
-                    .append(",").append(pageSize);
+            switch (queryType) {
+                case "search_artist":
+                    sb.append("search_artist?").append("transform=1").append("&order=author")
+                            .append("&filter=author,cs,").append(query).append("&page=").append(pageNo)
+                            .append(",").append(pageSize);
+                    break;
+                case "search_song":
+                    sb.append("search_song?").append("transform=1").append("&order=title")
+                            .append("&filter=title,cs,").append(query).append("&page=").append(pageNo)
+                            .append(",").append(pageSize);
+                    break;
+                default:
+                    sb.append("search_album?").append("transform=1").append("&order=title")
+                            .append("&filter=title,cs,").append(query).append("&page=").append(pageNo)
+                            .append(",").append(pageSize);
+                    break;
+            }
             return sb.toString();
         }
 
