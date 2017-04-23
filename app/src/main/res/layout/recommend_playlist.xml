@@ -29,7 +29,7 @@
             android:layout_centerInParent="true"
             android:textSize="15sp"
             android:textColor="@color/text_color"
-            android:text="推荐歌单" />
+            android:text="推荐讲道专辑" />
 
         <TextView
             android:id="@+id/more"

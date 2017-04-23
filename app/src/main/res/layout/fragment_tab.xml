@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/bar_search"
-                android:text="本地音乐"
+                android:text="本地音频"
                 android:textColor="@color/white_text"
                 android:textSize="20sp" />
 
