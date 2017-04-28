@@ -154,8 +154,8 @@ public class DownloadTask implements Runnable {
         public Builder setDBEntity(DownloadDBEntity dbEntity) {
             this.dbEntity = dbEntity;
             downloadStatus = dbEntity.getDownloadStatus();
-//            url = dbEntity.getUrl();
-            url = HttpUtil.urlEncode(dbEntity.getUrl());
+            url = dbEntity.getUrl();
+//            url = HttpUtil.urlEncode(dbEntity.getUrl());
             id = dbEntity.getDownloadId();
             fileName = dbEntity.getFileName();
             art = dbEntity.getArtist();

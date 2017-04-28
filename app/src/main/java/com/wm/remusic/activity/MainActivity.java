@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
 
         barnet = (ImageView) findViewById(R.id.bar_net);
         barmusic = (ImageView) findViewById(R.id.bar_music);
-        barfriends = (ImageView) findViewById(R.id.bar_friends);
+//        barfriends = (ImageView) findViewById(R.id.bar_friends);
         search = (ImageView) findViewById(R.id.bar_search);
         barmusic = (ImageView) findViewById(R.id.bar_music);
         drawerLayout = (DrawerLayout) findViewById(R.id.fd);

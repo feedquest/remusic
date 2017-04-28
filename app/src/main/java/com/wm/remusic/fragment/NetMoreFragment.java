@@ -140,6 +140,7 @@ public class NetMoreFragment extends AttachDialogFragment {
         // long musicId = Long.parseLong(args.trim());
         adapterMusicInfo = getArguments().getParcelable("music");
         artist = adapterMusicInfo.artist;
+//        artistid = adapterMusicInfo.artistId;
         albumId = adapterMusicInfo.albumId + "";
         albumName = adapterMusicInfo.albumName;
         musicName = adapterMusicInfo.musicName;
