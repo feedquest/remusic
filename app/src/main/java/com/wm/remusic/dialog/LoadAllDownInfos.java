@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+import com.wm.remusic.net.HttpUtil;
 
 import com.wm.remusic.R;
 import com.wm.remusic.downmusic.DownService;
@@ -90,7 +91,7 @@ public class LoadAllDownInfos extends AsyncTask<Void, Void, Boolean> {
             }
                 for (int i = 0; i < le; i++) {
                     totalSize += mDownInfoArray.get(i).getFile_size();
-                    mUrlList.add(mDownInfoArray.get(i).getFile_link());
+                    mUrlList.add(HttpUtil.urlEncode(mDownInfoArray.get(i).getFile_link()));
                 }
 
         } catch (Exception e) {
