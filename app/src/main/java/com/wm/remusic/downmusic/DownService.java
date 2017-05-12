@@ -246,7 +246,7 @@ public class DownService extends Service {
 
     private String getDownSave() {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/remusic/");
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/preaching/");
             if (!file.exists()) {
                 boolean r = file.mkdirs();
                 if (!r) {

@@ -214,7 +214,7 @@ public class NetMoreFragment extends AttachDialogFragment {
                                     ArrayList<SearchArtistInfo> artistResults = new ArrayList<>();
                                     try {
 
-                                        JsonArray artistArray = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.artist, 1, 50,"search_artist")).get("search_artist").getAsJsonArray();
+                                        JsonArray artistArray = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.artist, 1, 100,"search_artist")).get("search_artist").getAsJsonArray();
 //                                        JsonObject artistObject = jsonObject.get("artist_info").getAsJsonObject();
 //                                        JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
                                         for (JsonElement o : artistArray) {
@@ -267,7 +267,7 @@ public class NetMoreFragment extends AttachDialogFragment {
                                     ArrayList<SearchAlbumInfo> albumResults = new ArrayList<SearchAlbumInfo>();
                                     try {
 
-                                        JsonArray albumArray  = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.albumName, 1, 10,"search_album")).get("search_album").getAsJsonArray();
+                                        JsonArray albumArray  = HttpUtil.getResposeJsonObject(BMA.Search.searchMerge(adapterMusicInfo.albumName, 1, 500,"search_album")).get("search_album").getAsJsonArray();
 //                                        JsonObject artistObject =  jsonObject.get("artist_info").getAsJsonObject();
 //                                        JsonArray artistArray = artistObject.get("artist_list").getAsJsonArray();
 //                                        for (JsonElement o : artistArray) {
