@@ -342,17 +342,29 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
 
     }
 
-    class LoadLocalPlaylistInfo extends AsyncTask<Void, Void, Void> {
+    class LoadLocalPlaylistInfo extends AsyncTask<Void, Void, Boolean> {
         @Override
-        protected Void doInBackground(final Void... unused) {
+        protected Boolean doInBackground(final Void... unused) {
+            try{
             adapterList = PlaylistsManager.getInstance(mContext).getMusicInfos(Long.parseLong(playlsitId));
-            return null;
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return false;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            loadFrameLayout.removeAllViews();
-            mAdapter.updateDataSet(adapterList);
+        protected void onPostExecute(Boolean complete) {
+            if (!complete) {
+                loadFrameLayout.removeAllViews();
+                tryAgain.setVisibility(View.VISIBLE);
+            } else {
+                loadFrameLayout.removeAllViews();
+                recyclerView.setVisibility(View.VISIBLE);
+                mAdapter.updateDataSet(adapterList);
+
+            }
         }
     }
 
