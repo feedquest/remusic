@@ -147,29 +147,29 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+//                    case 1:
+//                        drawerLayout.closeDrawers();
+//                        break;
                     case 1:
-                        drawerLayout.closeDrawers();
-                        break;
-                    case 2:
                         CardPickerDialog dialog = new CardPickerDialog();
                         dialog.setClickListener(MainActivity.this);
                         dialog.show(getSupportFragmentManager(), "theme");
                         drawerLayout.closeDrawers();
 
                         break;
-                    case 3:
-                        TimingFragment fragment3 = new TimingFragment();
-                        fragment3.show(getSupportFragmentManager(), "timing");
-                        drawerLayout.closeDrawers();
-
-                        break;
-                    case 4:
-                        BitSetFragment bfragment = new BitSetFragment();
-                        bfragment.show(getSupportFragmentManager(), "bitset");
-                        drawerLayout.closeDrawers();
-
-                        break;
-                    case 5:
+//                    case 3:
+//                        TimingFragment fragment3 = new TimingFragment();
+//                        fragment3.show(getSupportFragmentManager(), "timing");
+//                        drawerLayout.closeDrawers();
+//
+//                        break;
+//                    case 4:
+//                        BitSetFragment bfragment = new BitSetFragment();
+//                        bfragment.show(getSupportFragmentManager(), "bitset");
+//                        drawerLayout.closeDrawers();
+//
+//                        break;
+                    case 2:
                         if (MusicPlayer.isPlaying()) {
                             MusicPlayer.playOrPause();
                         }

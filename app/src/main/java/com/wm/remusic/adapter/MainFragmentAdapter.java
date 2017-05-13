@@ -121,12 +121,12 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
                 isLoveList = false;
                 break;
             case 2:
-                itemHolder.sectionItem.setText("创建的歌单" + "(" + playlists.size() + ")");
+                itemHolder.sectionItem.setText("创建的音频列表" + "(" + playlists.size() + ")");
                 itemHolder.sectionImg.setImageResource(R.drawable.list_icn_arr_right);
                 setSectionListener(itemHolder, i);
                 break;
             case 3:
-                itemHolder.sectionItem.setText("收藏的歌单" + "(" + netplaylists.size() + ")");
+                itemHolder.sectionItem.setText("收藏的音频列表" + "(" + netplaylists.size() + ")");
                 itemHolder.sectionImg.setImageResource(R.drawable.list_icn_arr_right);
                 setSectionListener(itemHolder, i);
                 break;
