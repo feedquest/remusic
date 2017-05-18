@@ -39,6 +39,7 @@ public class NetSearchWordsActivity extends AppCompatActivity implements SearchV
     private SearchView mSearchView;
     private InputMethodManager mImm;
     private String queryString;
+    private String artistName;
 
 
     @Override
@@ -60,6 +61,14 @@ public class NetSearchWordsActivity extends AppCompatActivity implements SearchV
 
         mImm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        if (getIntent().getExtras() != null) {
+            artistName = getIntent().getStringExtra("artistname");
+
+            hideInputManager();
+            FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+            SearchTabPagerFragment fragment = SearchTabPagerFragment.newInstance(0, artistName);
+            ft1.replace(R.id.search_frame, fragment).commitAllowingStateLoss();
+        }
     }
 
 

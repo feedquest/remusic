@@ -92,7 +92,8 @@ public class TabNetPagerFragment extends AttachFragment implements ChangeView {
         adapter.addFragment(recommendFragment, "最新讲道");
         adapter.addFragment(new AllPlaylistFragment(), "讲道专辑");
         //  adapter.addFragment(new NetFragment(), "主播电台");
-        adapter.addFragment(new RankingFragment(), "排行榜");
+//        adapter.addFragment(new RankingFragment(), "排行榜");
+        adapter.addFragment(new AllArtistsFragment(), "讲员");
 
         viewPager.setAdapter(adapter);
     }

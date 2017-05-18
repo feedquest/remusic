@@ -454,6 +454,15 @@ public class BMA {
             return sb.toString();
         }
 
+        public static String artistDan(int pageNo, int pageSize) {
+            StringBuffer sb = new StringBuffer(BASE_FQ);
+//            sb.append("&method=").append("baidu.ting.diy.gedan")
+//                    .append("&page_size=").append(pageSize)
+//                    .append("&page_no=").append(pageNo);
+            sb.append("all_artists?").append("transform=1").append("&order=update_time,desc")
+                    .append("&page=").append(pageNo).append(",").append(pageSize);
+            return sb.toString();
+        }
 
         /**
          * 包含标签的歌单
