@@ -339,7 +339,7 @@ public class NetMoreFragment extends AttachDialogFragment {
         setInfo("收藏到歌单", R.drawable.lay_icn_fav);
         setInfo("分享", R.drawable.lay_icn_share);
         setInfo("下载", R.drawable.lay_icn_dld);
-        setInfo("歌手：" + artist, R.drawable.lay_icn_artist);
+        setInfo("讲员：" + artist, R.drawable.lay_icn_artist);
         setInfo("专辑：" + albumName, R.drawable.lay_icn_alb);
         setInfo("查看歌曲信息", R.drawable.lay_icn_document);
     }

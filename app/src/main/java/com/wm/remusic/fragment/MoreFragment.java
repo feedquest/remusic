@@ -379,31 +379,31 @@ public class MoreFragment extends AttachDialogFragment {
                             dismiss();
                             break;
                         case 6:
-                            if(adapterMusicInfo.islocal){
-                                new AlertDialog.Builder(mContext).setTitle(getResources().getString(R.string.sure_to_set_ringtone)).
-                                        setPositiveButton(getResources().getString(R.string.sure), new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                Uri ringUri = Uri.parse("file://" + adapterMusicInfo.data);
-                                                RingtoneManager.setActualDefaultRingtoneUri(mContext, RingtoneManager.TYPE_NOTIFICATION, ringUri);
-                                                dialog.dismiss();
-                                                Toast.makeText(mContext, getResources().getString(R.string.set_ringtone_successed),
-                                                        Toast.LENGTH_SHORT).show();
-                                                dismiss();
-                                            }
-                                        }).
-                                        setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        }).show();
-                            }else {
-
-                            }
-
-                            break;
-                        case 7:
+//                            if(adapterMusicInfo.islocal){
+//                                new AlertDialog.Builder(mContext).setTitle(getResources().getString(R.string.sure_to_set_ringtone)).
+//                                        setPositiveButton(getResources().getString(R.string.sure), new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                Uri ringUri = Uri.parse("file://" + adapterMusicInfo.data);
+//                                                RingtoneManager.setActualDefaultRingtoneUri(mContext, RingtoneManager.TYPE_NOTIFICATION, ringUri);
+//                                                dialog.dismiss();
+//                                                Toast.makeText(mContext, getResources().getString(R.string.set_ringtone_successed),
+//                                                        Toast.LENGTH_SHORT).show();
+//                                                dismiss();
+//                                            }
+//                                        }).
+//                                        setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                dialog.dismiss();
+//                                            }
+//                                        }).show();
+//                            }else {
+//
+//                            }
+//
+//                            break;
+//                        case 7:
                             MusicDetailFragment detailFrament = MusicDetailFragment.newInstance(adapterMusicInfo);
                             detailFrament.show(getActivity().getSupportFragmentManager(), "detail");
                             dismiss();
@@ -515,10 +515,10 @@ public class MoreFragment extends AttachDialogFragment {
         setInfo("收藏到歌单", R.drawable.lay_icn_fav);
         setInfo("分享", R.drawable.lay_icn_share);
         setInfo("删除", R.drawable.lay_icn_delete);
-        setInfo("歌手：" + artist, R.drawable.lay_icn_artist);
+        setInfo("讲员：" + artist, R.drawable.lay_icn_artist);
         setInfo("专辑：" + albumName, R.drawable.lay_icn_alb);
-        setInfo("设为铃声", R.drawable.lay_icn_ring);
-        setInfo("查看歌曲信息", R.drawable.lay_icn_document);
+//        setInfo("设为铃声", R.drawable.lay_icn_ring);
+        setInfo("查看讲道信息", R.drawable.lay_icn_document);
     }
 
     //设置专辑，艺术家，文件夹overflow条目

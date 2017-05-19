@@ -682,8 +682,10 @@ public class BMA {
                     break;
                 case "search_song":
                     sb.append("search_song?").append("transform=1").append("&order=title")
-                            .append("&filter=title,cs,").append(query).append("&page=").append(pageNo)
-                            .append(",").append(pageSize);
+                            .append("&filter[]=title,cs,").append(query)
+                            .append("&filter[]=author,cs,").append(query)
+                            .append("&satisfy=any")
+                            .append("&page=").append(pageNo).append(",").append(pageSize);
                     break;
                 default:
                     sb.append("search_album?").append("transform=1").append("&order=title")
