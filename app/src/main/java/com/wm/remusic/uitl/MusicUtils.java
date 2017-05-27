@@ -260,8 +260,14 @@ public class MusicUtils implements IConstants {
             music.albumData = getAlbumArtUri(music.albumId) + "";
             music.duration = cursor.getInt(cursor
                     .getColumnIndex(Media.DURATION));
-            music.musicName = cursor.getString(cursor
-                    .getColumnIndex(Media.TITLE));
+            if (cursor.getString(cursor.getColumnIndex(Media.TITLE)).lastIndexOf("??") > 0) {
+                music.musicName = cursor.getString(cursor.getColumnIndex(Media.DATA)).substring(cursor.getString(cursor.getColumnIndex(Media.DATA)).lastIndexOf("/")+1);
+            }
+            else
+            {
+                music.musicName = cursor.getString(cursor
+                        .getColumnIndex(Media.TITLE));
+            }
             music.artist = cursor.getString(cursor
                     .getColumnIndex(Media.ARTIST));
             music.artistId = cursor.getLong(cursor.getColumnIndex(Media.ARTIST_ID));

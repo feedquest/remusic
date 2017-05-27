@@ -518,7 +518,7 @@ public class MoreFragment extends AttachDialogFragment {
         setInfo("讲员：" + artist, R.drawable.lay_icn_artist);
         setInfo("专辑：" + albumName, R.drawable.lay_icn_alb);
 //        setInfo("设为铃声", R.drawable.lay_icn_ring);
-        setInfo("查看讲道信息", R.drawable.lay_icn_document);
+        setInfo("查看歌曲信息", R.drawable.lay_icn_document);
     }
 
     //设置专辑，艺术家，文件夹overflow条目
