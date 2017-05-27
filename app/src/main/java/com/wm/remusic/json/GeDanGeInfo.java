@@ -44,6 +44,7 @@ public class GeDanGeInfo {
     private String is_charge;
     private String all_rate;
     private String high_rate;
+    private String artist_id;
     private String all_artist_id;
     private String copy_type;
     private int has_mv;
@@ -62,6 +63,8 @@ public class GeDanGeInfo {
     private String resource_type_ext;
     private String mv_provider;
     private String share;
+    private String lrclink;
+    private String pic_big;
 
     public String getTitle() {
         return title;
@@ -133,6 +136,14 @@ public class GeDanGeInfo {
 
     public void setHigh_rate(String high_rate) {
         this.high_rate = high_rate;
+    }
+
+    public String getArtist_id() {
+        return artist_id;
+    }
+
+    public void setArtist_id(String artist_id) {
+        this.artist_id = artist_id;
     }
 
     public String getAll_artist_id() {
@@ -277,5 +288,21 @@ public class GeDanGeInfo {
 
     public void setShare(String share) {
         this.share = share;
+    }
+
+    public String getLrclink() {
+        return lrclink;
+    }
+
+    public void setLrclink(String lrclink) {
+        this.lrclink = lrclink;
+    }
+
+    public String getPic() {
+        return pic_big;
+    }
+
+    public void setPic(String pic_big) {
+        this.pic_big = pic_big;
     }
 }

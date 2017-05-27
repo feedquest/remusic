@@ -247,35 +247,35 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
                 for (int i = 0; i < musicCount; i++) {
                     GeDanGeInfo geDanGeInfo = MainApplication.gsonInstance().fromJson(pArray.get(i), GeDanGeInfo.class);
                     mList.add(geDanGeInfo);
-                    RequestThreadPool.post(new MusicDetailInfoGet(geDanGeInfo.getSong_id(), i, sparseArray));
+//                    RequestThreadPool.post(new MusicDetailInfoGet(geDanGeInfo.getSong_id(), i, sparseArray));
                 }
 
-                int tryCount = 0;
-                while (sparseArray.size() != musicCount && tryCount < 1000 && !isCancelled()){
-                    tryCount++;
-                    try {
-                        Thread.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+//                int tryCount = 0;
+//                while (sparseArray.size() != musicCount && tryCount < 1000 && !isCancelled()){
+//                    tryCount++;
+//                    try {
+//                        Thread.sleep(30);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
 
-                if(sparseArray.size() == musicCount){
+//                if(sparseArray.size() == musicCount){
                     for (int i = 0; i < mList.size(); i++) {
                         MusicInfo musicInfo = new MusicInfo();
                         musicInfo.songId = Integer.parseInt(mList.get(i).getSong_id());
                         musicInfo.musicName = mList.get(i).getTitle();
-                        musicInfo.artist = sparseArray.get(i).getArtist_name();
+                        musicInfo.artist = mList.get(i).getAuthor();
                         musicInfo.islocal = false;
-                        musicInfo.albumName = sparseArray.get(i).getAlbum_title();
+                        musicInfo.albumName = mList.get(i).getAlbum_title();
                         musicInfo.albumId = Integer.parseInt(mList.get(i).getAlbum_id());
-                        musicInfo.artistId = Integer.parseInt(sparseArray.get(i).getArtist_id());
-                        musicInfo.lrc = sparseArray.get(i).getLrclink();
-                        musicInfo.albumData = sparseArray.get(i).getPic_radio();
+                        musicInfo.artistId = Integer.parseInt(mList.get(i).getArtist_id());
+                        musicInfo.lrc = mList.get(i).getLrclink();
+                        musicInfo.albumData = mList.get(i).getPic();
                         adapterList.add(musicInfo);
                     }
                     return true;
-                }
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
