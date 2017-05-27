@@ -510,7 +510,7 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
                     public void onClick(View v) {
 
                         Log.e("re", "get");
-                        HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.artist.item&format=json&tinguid=1035&artistid=14");
+//                        HttpUtil.getResposeJsonObject("http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.8.1.0&channel=ppzs&operator=3&method=baidu.ting.artist.item&format=json&tinguid=1035&artistid=14");
 
                         if (localItem.islocal) {
                             MoreFragment morefragment = MoreFragment.newInstance(arraylist.get(i - 1),
