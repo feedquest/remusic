@@ -13,6 +13,7 @@ buildscript {
 }
 
 allprojects {
+    buildDir = "d:/Dropbox/Dropbox/android"
     repositories {
         jcenter()
     }

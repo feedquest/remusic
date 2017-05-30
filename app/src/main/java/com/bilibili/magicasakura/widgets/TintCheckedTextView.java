@@ -36,7 +36,7 @@ import com.wm.remusic.R;
  * special view for replacing view in preference , not recommend to use it in common
  * layout: select_dialog_singlechoice_xxx
  */
-public class TintCheckedTextView extends CheckedTextView implements Tintable {
+@SuppressWarnings("ResourceType") public class TintCheckedTextView extends CheckedTextView implements Tintable {
     private static final int[] ATTRS = {
             android.R.attr.drawableLeft,
             R.attr.drawableLeftTint
