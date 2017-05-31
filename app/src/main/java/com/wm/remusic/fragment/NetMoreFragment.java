@@ -28,6 +28,7 @@ import com.wm.remusic.MainApplication;
 import com.wm.remusic.R;
 import com.wm.remusic.activity.AlbumsDetailActivity;
 import com.wm.remusic.activity.ArtistDetailActivity;
+import com.wm.remusic.activity.NetSearchWordsActivity;
 import com.wm.remusic.adapter.MusicFlowAdapter;
 import com.wm.remusic.adapter.OverFlowAdapter;
 import com.wm.remusic.adapter.OverFlowItem;
@@ -187,7 +188,7 @@ public class NetMoreFragment extends AttachDialogFragment {
                         dismiss();
                         break;
                     case 3:
-                        new AlertDialog.Builder(mContext).setTitle("要下载音乐吗").
+                        new AlertDialog.Builder(mContext).setTitle("要下载讲道吗").
                                 setPositiveButton(mContext.getString(R.string.sure), new DialogInterface.OnClickListener() {
 
                                     @Override
@@ -230,14 +231,15 @@ public class NetMoreFragment extends AttachDialogFragment {
                                         mHandler.post(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(mContext, "没有找到该艺术家", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(mContext, "没有找到该讲员", Toast.LENGTH_SHORT).show();
                                             }
                                         });
 
                                     } else {
                                         SearchArtistInfo info = artistResults.get(0);
-                                        Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                                        intent.putExtra("artistid", info.getArtist_id());
+//                                        Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+                                        Intent intent = new Intent(mContext, NetSearchWordsActivity.class);
+//                                        intent.putExtra("artistid", info.getArtist_id());
                                         intent.putExtra("artistname", info.getAuthor());
 //                                        intent.putExtra("albumid", info.getAlbum_id());
 //                                        intent.putExtra("albumart", info.getPic_small());
@@ -250,8 +252,9 @@ public class NetMoreFragment extends AttachDialogFragment {
                             }.execute();
                         } else {
 
-                            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                            intent.putExtra("artistid", adapterMusicInfo.artistId + "");
+//                            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+                            Intent intent = new Intent(mContext, NetSearchWordsActivity.class);
+//                            intent.putExtra("artistid", adapterMusicInfo.artistId + "");
                             intent.putExtra("artistname", adapterMusicInfo.artist);
                             mContext.startActivity(intent);
                         }
@@ -336,12 +339,12 @@ public class NetMoreFragment extends AttachDialogFragment {
     private void setMusicInfo() {
         //设置mlistInfo，listview要显示的内容
         setInfo("下一首播放", R.drawable.lay_icn_next);
-        setInfo("收藏到歌单", R.drawable.lay_icn_fav);
+        setInfo("收藏到列表", R.drawable.lay_icn_fav);
         setInfo("分享", R.drawable.lay_icn_share);
         setInfo("下载", R.drawable.lay_icn_dld);
         setInfo("讲员：" + artist, R.drawable.lay_icn_artist);
         setInfo("专辑：" + albumName, R.drawable.lay_icn_alb);
-        setInfo("查看歌曲信息", R.drawable.lay_icn_document);
+        setInfo("查看音频信息", R.drawable.lay_icn_document);
     }
 
 

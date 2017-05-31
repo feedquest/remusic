@@ -96,7 +96,7 @@ public final class PreferencesUtility {
     }
 
     public String getItemPosition() {
-        return mPreferences.getString("item_relative_position", "推荐歌单 最新专辑 主播电台");
+        return mPreferences.getString("item_relative_position", "推荐歌单 最新专辑");
     }
 
     public void setDownMusicBit(int bit) {

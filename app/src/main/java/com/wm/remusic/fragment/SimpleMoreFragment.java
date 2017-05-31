@@ -239,11 +239,11 @@ public class SimpleMoreFragment extends AttachDialogFragment {
     private void setMusicInfo() {
         //设置mlistInfo，listview要显示的内容
         setInfo("下一首播放", R.drawable.lay_icn_next);
-        setInfo("收藏到歌单", R.drawable.lay_icn_fav);
+        setInfo("收藏到列表", R.drawable.lay_icn_fav);
         setInfo("分享", R.drawable.lay_icn_share);
         setInfo("删除", R.drawable.lay_icn_delete);
         setInfo("设为铃声", R.drawable.lay_icn_ring);
-        setInfo("查看歌曲信息", R.drawable.lay_icn_document);
+        setInfo("查看音频信息", R.drawable.lay_icn_document);
     }
 
 

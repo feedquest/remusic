@@ -31,6 +31,7 @@ import com.wm.remusic.MainApplication;
 import com.wm.remusic.R;
 import com.wm.remusic.activity.AlbumsDetailActivity;
 import com.wm.remusic.activity.ArtistDetailActivity;
+import com.wm.remusic.activity.NetSearchWordsActivity;
 import com.wm.remusic.adapter.MusicFlowAdapter;
 import com.wm.remusic.adapter.OverFlowAdapter;
 import com.wm.remusic.adapter.OverFlowItem;
@@ -304,14 +305,15 @@ public class MoreFragment extends AttachDialogFragment {
                                             mHandler.post(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    Toast.makeText(mContext, "没有找到该艺术家", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(mContext, "没有找到该讲员", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
 
                                         } else {
                                             SearchArtistInfo info = artistResults.get(0);
-                                            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                                            intent.putExtra("artistid", info.getArtist_id());
+//                                            Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+                                            Intent intent = new Intent(mContext, NetSearchWordsActivity.class);
+//                                            intent.putExtra("artistid", info.getArtist_id());
                                             intent.putExtra("artistname", info.getAuthor());
                                             mContext.startActivity(intent);
                                         }
@@ -320,8 +322,9 @@ public class MoreFragment extends AttachDialogFragment {
                                 }.execute();
                             } else {
 
-                                Intent intent = new Intent(mContext, ArtistDetailActivity.class);
-                                intent.putExtra("artistid", adapterMusicInfo.artistId + "");
+//                                Intent intent = new Intent(mContext, ArtistDetailActivity.class);
+                                Intent intent = new Intent(mContext, NetSearchWordsActivity.class);
+//                                intent.putExtra("artistid", adapterMusicInfo.artistId + "");
                                 intent.putExtra("artistname", adapterMusicInfo.artist);
                                 mContext.startActivity(intent);
                             }
@@ -512,19 +515,19 @@ public class MoreFragment extends AttachDialogFragment {
     private void setMusicInfo() {
         //设置mlistInfo，listview要显示的内容
         setInfo("下一首播放", R.drawable.lay_icn_next);
-        setInfo("收藏到歌单", R.drawable.lay_icn_fav);
+        setInfo("收藏到列表", R.drawable.lay_icn_fav);
         setInfo("分享", R.drawable.lay_icn_share);
         setInfo("删除", R.drawable.lay_icn_delete);
         setInfo("讲员：" + artist, R.drawable.lay_icn_artist);
         setInfo("专辑：" + albumName, R.drawable.lay_icn_alb);
 //        setInfo("设为铃声", R.drawable.lay_icn_ring);
-        setInfo("查看歌曲信息", R.drawable.lay_icn_document);
+        setInfo("查看音频信息", R.drawable.lay_icn_document);
     }
 
     //设置专辑，艺术家，文件夹overflow条目
     private void setCommonInfo() {
         setInfo("播放", R.drawable.lay_icn_play);
-        setInfo("收藏到歌单", R.drawable.lay_icn_fav);
+        setInfo("收藏到列表", R.drawable.lay_icn_fav);
         setInfo("删除", R.drawable.lay_icn_delete);
     }
 

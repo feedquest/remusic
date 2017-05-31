@@ -221,7 +221,7 @@ public class RecommendFragment extends AttachFragment {
                 mViewHashMap = new HashMap<>();
                 mViewHashMap.put("推荐歌单", v1);
                 mViewHashMap.put("最新专辑", v2);
-                mViewHashMap.put("主播电台", v3);
+//                mViewHashMap.put("主播电台", v3);
                 mPosition = PreferencesUtility.getInstance(mContext).getItemPosition();
                 mViewContent.removeView(mLoadView);
                 if(isDayFirst){
@@ -331,7 +331,7 @@ public class RecommendFragment extends AttachFragment {
             mViewHashMap = new HashMap<>();
             mViewHashMap.put("推荐歌单", v1);
             mViewHashMap.put("最新专辑", v2);
-            mViewHashMap.put("主播电台", v3);
+//            mViewHashMap.put("主播电台", v3);
             mPosition = PreferencesUtility.getInstance(mContext).getItemPosition();
             mViewContent.removeView(mLoadView);
 

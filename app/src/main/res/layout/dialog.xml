@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingTop="15dp"
-            android:text="新建歌单"
+            android:text="新建讲道列表"
             android:textColor="@color/text_color"
             android:textSize="17sp"></TextView>
 
@@ -36,7 +36,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
             android:layout_weight="5"
-            android:hint="请输入歌单标题"
+            android:hint="请输入讲道列表标题"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:textSize="12sp" />
@@ -45,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="歌单" />
+            android:text="列表" />
 
     </LinearLayout>
 
