@@ -142,6 +142,18 @@ public class MusicPlayer {
     }
 
 
+    public static void Pause() {
+        try {
+            if (mService != null) {
+                if (mService.isPlaying()) {
+                    mService.pause();
+                }
+            }
+        } catch (final Exception ignored) {
+        }
+    }
+
+
     public static boolean isTrackLocal() {
         try {
             if (mService != null) {

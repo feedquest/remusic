@@ -96,11 +96,11 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
                 switch (state) {
                     case 0:
                         Log.d(TAG, "Headset unplugged");
-                        MusicPlayer.playOrPause();
+                        MusicPlayer.Pause();
                         break;
                     case 1:
                         Log.d(TAG, "Headset plugged");
-                        MusicPlayer.playOrPause();
+                        //MusicPlayer.playOrPause();
                         break;
                 }
             }
