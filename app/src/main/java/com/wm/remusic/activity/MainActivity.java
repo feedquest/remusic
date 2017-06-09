@@ -2,7 +2,10 @@ package com.wm.remusic.activity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -47,6 +51,8 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
     private ListView mLvLeftMenu;
     private long time = 0;
     private SplashScreen splashScreen;
+    private HeadSetReceiver myReceiver;
+    private String TAG = "MainActivity";
 
     public void onCreate(Bundle savedInstanceState) {
         splashScreen = new SplashScreen(this);
@@ -54,6 +60,7 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
                 SplashScreen.SLIDE_LEFT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myReceiver = new HeadSetReceiver();
         getWindow().setBackgroundDrawableResource(R.color.background_material_light_1);
 
         barnet = (ImageView) findViewById(R.id.bar_net);
@@ -76,6 +83,29 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
 
     }
 
+    public void onResume() {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(myReceiver, filter);
+        super.onResume();
+    }
+
+    private class HeadSetReceiver extends BroadcastReceiver {
+        @Override public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
+                int state = intent.getIntExtra("state", -1);
+                switch (state) {
+                    case 0:
+                        Log.d(TAG, "Headset unplugged");
+                        MusicPlayer.playOrPause();
+                        break;
+                    case 1:
+                        Log.d(TAG, "Headset plugged");
+                        MusicPlayer.playOrPause();
+                        break;
+                }
+            }
+        }
+    }
 
     private void setToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
