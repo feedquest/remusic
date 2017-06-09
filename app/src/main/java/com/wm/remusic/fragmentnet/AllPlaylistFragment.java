@@ -29,6 +29,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wm.remusic.R;
+import com.wm.remusic.activity.AlbumsDetailActivity;
 import com.wm.remusic.activity.PlaylistActivity;
 import com.wm.remusic.fragment.AttachFragment;
 import com.wm.remusic.json.GedanInfo;
@@ -247,13 +248,14 @@ public class AllPlaylistFragment extends AttachFragment {
                 ((ItemView) holder).itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(mContext, PlaylistActivity.class);
-                        intent.putExtra("playlistid", info.getListid());
-                        intent.putExtra("islocal", false);
+
+                        Intent intent = new Intent(mContext, AlbumsDetailActivity.class);
+                        intent.putExtra("albumid", info.getListid());
                         intent.putExtra("albumart", info.getPic_300());
-                        intent.putExtra("playlistname", info.getTitle());
-                        intent.putExtra("playlistDetail", info.getTag());
-                        intent.putExtra("playlistcount", info.getListenum());
+                        intent.putExtra("albumname", info.getTitle());
+                        intent.putExtra("albumdetail", info.getTag());
+//                        intent.putExtra("playlistcount", info.getListenum());
+
                         mContext.startActivity(intent);
                     }
                 });
@@ -277,7 +279,7 @@ public class AllPlaylistFragment extends AttachFragment {
             }
         }
 
-        class ItemView extends RecyclerView.ViewHolder {
+        class ItemView extends RecyclerView.ViewHolder implements View.OnClickListener {
             private SimpleDraweeView art;
             private TextView name, count;
 
@@ -286,6 +288,10 @@ public class AllPlaylistFragment extends AttachFragment {
                 art = (SimpleDraweeView) itemView.findViewById(R.id.playlist_art);
                 name = (TextView) itemView.findViewById(R.id.playlist_name);
                 count = (TextView) itemView.findViewById(R.id.playlist_listen_count);
+            }
+            @Override
+            public void onClick(View v) {
+
             }
         }
 

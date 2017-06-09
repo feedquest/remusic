@@ -140,7 +140,7 @@ public class RankPlaylistActivity extends BaseActivity implements ObservableScro
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.actionbar_back);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("歌单");
+        actionBar.setTitle("讲道专辑");
         toolbar.setPadding(0, mStatusSize, 0, 0);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -399,7 +399,7 @@ public class RankPlaylistActivity extends BaseActivity implements ObservableScro
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar_background));
         }
         if (scrollY == 0) {
-            toolbar.setTitle("歌单");
+            toolbar.setTitle("讲道专辑");
             actionBar.setBackgroundDrawable(null);
         }
         if (scrollY > mFlexibleSpaceImageHeight - mActionBarSize - mStatusSize) {

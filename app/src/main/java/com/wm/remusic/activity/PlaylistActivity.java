@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
+import android.support.annotation.Nullable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import com.facebook.common.references.CloseableReference;
+import com.facebook.datasource.DataSource;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,6 +38,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.facebook.imagepipeline.core.ImagePipeline;
+import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
+import com.facebook.imagepipeline.image.CloseableImage;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.common.executors.CallerThreadExecutor;
 
 import com.bilibili.magicasakura.widgets.TintImageView;
 import com.facebook.binaryresource.BinaryResource;
@@ -177,7 +187,7 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.actionbar_back);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("歌单");
+        actionBar.setTitle("讲道专辑");
         toolbar.setPadding(0, mStatusSize, 0, 0);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -506,14 +516,41 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
             } else {
                 //drawable = Drawable.createFromStream( new URL(albumPath).openStream(),"src");
                 ImageRequest imageRequest = ImageRequest.fromUri(albumPath);
-                CacheKey cacheKey = DefaultCacheKeyFactory.getInstance()
-                        .getEncodedCacheKey(imageRequest);
-                BinaryResource resource = ImagePipelineFactory.getInstance()
-                        .getMainDiskStorageCache().getResource(cacheKey);
-                File file = ((FileBinaryResource) resource).getFile();
-                if (file != null)
-                    new setBlurredAlbumArt().execute(ImageUtils.getArtworkQuick(file, 300, 300));
+//                CacheKey cacheKey = DefaultCacheKeyFactory.getInstance()
+//                        .getEncodedCacheKey(imageRequest);
+//                BinaryResource resource = ImagePipelineFactory.getInstance()
+//                        .getMainDiskStorageCache().getResource(cacheKey);
+//                File file = ((FileBinaryResource) resource).getFile();
+//                if (file != null)
+//                    new setBlurredAlbumArt().execute(ImageUtils.getArtworkQuick(file, 300, 300));
+//            }
+
+                imageRequest = ImageRequestBuilder.newBuilderWithSource(Uri.parse(albumPath))
+                        .setProgressiveRenderingEnabled(true).build();
+                ImagePipeline imagePipeline = Fresco.getImagePipeline();
+                DataSource<CloseableReference<CloseableImage>>
+                        dataSource = imagePipeline.fetchDecodedImage(imageRequest, PlaylistActivity.this);
+
+                dataSource.subscribe(new BaseBitmapDataSubscriber() {
+
+                                         @Override
+                                         public void onNewResultImpl(@Nullable Bitmap bitmap) {
+                                             // You can use the bitmap in only limited ways
+                                             // No need to do any cleanup.
+                                             if (bitmap != null) {
+                                                 new setBlurredAlbumArt().execute(bitmap);
+                                             }
+                                         }
+
+                                         @Override
+                                         public void onFailureImpl(DataSource dataSource) {
+                                             // No cleanup required here.
+
+                                         }
+                                     },
+                        CallerThreadExecutor.getInstance());
             }
+
 
         } catch (Exception e) {
               e.printStackTrace();
@@ -568,7 +605,7 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
         }
         if (scrollY == 0) {
             //PL 首页推荐歌单点击后进入的页面
-            toolbar.setTitle("歌单");
+            toolbar.setTitle("讲道专辑");
             actionBar.setBackgroundDrawable(null);
         }
         if (scrollY > mFlexibleSpaceImageHeight - mActionBarSize - mStatusSize) {

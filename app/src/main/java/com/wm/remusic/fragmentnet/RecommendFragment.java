@@ -434,13 +434,14 @@ public class RecommendFragment extends AttachFragment {
             ((ItemView) holder).itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, PlaylistActivity.class);
-                    intent.putExtra("playlistid", info.getListid());
-                    intent.putExtra("islocal", false);
+
+
+                    Intent intent = new Intent(mContext, AlbumsDetailActivity.class);
+                    intent.putExtra("albumid", info.getListid());
                     intent.putExtra("albumart", info.getPic());
-                    intent.putExtra("playlistname", info.getTitle());
-                    intent.putExtra("playlistDetail", info.getTag());
-                    intent.putExtra("playlistcount", info.getListenum());
+                    intent.putExtra("albumname", info.getTitle());
+                    intent.putExtra("albumdetail", info.getTag());
+
 
                     mContext.startActivity(intent);
                 }

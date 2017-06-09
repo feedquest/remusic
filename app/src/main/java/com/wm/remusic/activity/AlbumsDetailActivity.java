@@ -146,7 +146,7 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.actionbar_back);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("最新讲道专辑");
+        actionBar.setTitle("讲道专辑");
         toolbar.setPadding(0, mStatusSize, 0, 0);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -439,7 +439,7 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.toolbar_background));
         }
         if (scrollY == 0) {
-            toolbar.setTitle("最新讲道专辑");
+            toolbar.setTitle("讲道专辑");
             actionBar.setBackgroundDrawable(null);
         }
         if (scrollY > mFlexibleSpaceImageHeight - mActionBarSize - mStatusSize) {
