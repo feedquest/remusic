@@ -274,6 +274,11 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
                         musicInfo.albumData = mList.get(i).getPic();
                         adapterList.add(musicInfo);
                     }
+
+
+                //add hit
+                HttpUtil.getResposeString("http://mp3.feedquest.com/album/" + albumId);
+
                     return true;
 //                }
             } catch (Exception e) {
