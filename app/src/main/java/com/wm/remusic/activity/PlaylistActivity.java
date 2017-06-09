@@ -147,7 +147,7 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
             playlistCount = getIntent().getStringExtra("playlistcount");
 
             //add hit
-            HttpUtil.getResposeString("http://mp3.feedquest.com/album/" + playlsitId);
+            HttpUtil.getResposeString("http://mp3.feedquest.com/apiversion1/hitsapi.php?id=" + playlsitId);
         }
         mContext = this;
         setContentView(R.layout.activity_playlist);

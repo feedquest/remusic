@@ -277,7 +277,7 @@ public class AlbumsDetailActivity extends BaseActivity implements ObservableScro
 
 
                 //add hit
-                HttpUtil.getResposeString("http://mp3.feedquest.com/album/" + albumId);
+                HttpUtil.getResposeString("http://mp3.feedquest.com/apiversion1/hitsapi.php?id=" + albumId);
 
                     return true;
 //                }
