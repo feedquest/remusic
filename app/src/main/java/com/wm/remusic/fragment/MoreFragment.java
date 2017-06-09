@@ -230,11 +230,25 @@ public class MoreFragment extends AttachDialogFragment {
                             dismiss();
                             break;
                         case 2:
-                            Intent shareIntent = new Intent();
-                            shareIntent.setAction(Intent.ACTION_SEND);
-                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + adapterMusicInfo.data));
-                            shareIntent.setType("audio/*");
-                            mContext.startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
+//                            Intent shareIntent = new Intent();
+//                            shareIntent.setAction(Intent.ACTION_SEND);
+//                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + adapterMusicInfo.data));
+//                            shareIntent.setType("audio/*");
+//                            mContext.startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
+//                            dismiss();
+                            new AlertDialog.Builder(mContext).setTitle("分享功能待实现中").
+                                    setPositiveButton(getResources().getString(R.string.sure), new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                             dismiss();
+                                        }
+                                    }).
+                                    setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dismiss();
+                                        }
+                                    }).show();
                             dismiss();
                             break;
                         case 3:

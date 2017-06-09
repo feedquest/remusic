@@ -504,12 +504,12 @@ public class PlayingActivity extends BaseActivity implements IConstants {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle item selection
         if (item.getItemId() == R.id.menu_share) {
-            MusicInfo musicInfo = MusicUtils.getMusicInfo(PlayingActivity.this, MusicPlayer.getCurrentAudioId());
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + musicInfo.data));
-            shareIntent.setType("audio/*");
-            this.startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
+//            MusicInfo musicInfo = MusicUtils.getMusicInfo(PlayingActivity.this, MusicPlayer.getCurrentAudioId());
+//            Intent shareIntent = new Intent();
+//            shareIntent.setAction(Intent.ACTION_SEND);
+//            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + musicInfo.data));
+//            shareIntent.setType("audio/*");
+//            this.startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
 
         }
         return super.onOptionsItemSelected(item);

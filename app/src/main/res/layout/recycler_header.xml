@@ -185,7 +185,7 @@
                 <ImageView
                     android:layout_gravity="center"
                     android:id="@+id/playlist_share_view"
-                    android:src="@drawable/list_detail_icn_share"
+                    android:src="@drawable/list_detail_icn_share_dis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

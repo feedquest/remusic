@@ -262,11 +262,11 @@ public class PlaylistActivity extends BaseActivity implements ObservableScrollVi
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("http://music.baidu.com/songlist/" + playlsitId));
-                shareIntent.setType("html/*");
-                startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
+//                Intent shareIntent = new Intent();
+//                shareIntent.setAction(Intent.ACTION_SEND);
+//                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("http://mp3.feedquest.com/album/" + playlsitId));
+//                shareIntent.setType("html/*");
+//                startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.shared_to)));
             }
         });
 
