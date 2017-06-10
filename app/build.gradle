@@ -1,15 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyPassword 'e1d8a81c4t'
+            storeFile file('D:/Dropbox/Dropbox/security/app key/fuyinjiangdao.jks')
+            storePassword 'e1d8a81c4t'
+            keyAlias 'key0'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
-
     defaultConfig {
-        applicationId "com.wm.remusic"
+        applicationId "com.wm.fuyin"
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.01"
+        versionCode 2
+        versionName "1.02"
         //start
         renderscriptTargetApi 17
         renderscriptSupportModeEnabled true
@@ -19,6 +26,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }

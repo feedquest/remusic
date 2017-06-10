@@ -156,7 +156,7 @@ public class Nammu {
         permissions.add(Manifest.permission.RECORD_AUDIO);
         //Group Phone
         permissions.add(Manifest.permission.CALL_PHONE);
-        permissions.add(Manifest.permission.READ_PHONE_STATE);
+//        permissions.add(Manifest.permission.READ_PHONE_STATE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             permissions.add(Manifest.permission.READ_CALL_LOG);
         }
