@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,6 +38,7 @@ import com.wm.remusic.fragment.MainFragment;
 import com.wm.remusic.fragment.TimingFragment;
 import com.wm.remusic.fragmentnet.TabNetPagerFragment;
 import com.wm.remusic.handler.HandlerUtil;
+import com.wm.remusic.service.ForceUpdateChecker;
 import com.wm.remusic.service.MusicPlayer;
 import com.wm.remusic.uitl.ThemeHelper;
 import com.wm.remusic.widget.CustomViewPager;
@@ -43,7 +47,7 @@ import com.wm.remusic.widget.SplashScreen;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements CardPickerDialog.ClickListener {
+public class MainActivity extends BaseActivity implements CardPickerDialog.ClickListener, ForceUpdateChecker.OnUpdateNeededListener {
     private ActionBar ab;
     private ImageView barnet, barmusic, barfriends, search;
     private ArrayList<ImageView> tabs = new ArrayList<>();
@@ -60,6 +64,9 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
                 SplashScreen.SLIDE_LEFT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
+
         myReceiver = new HeadSetReceiver();
         getWindow().setBackgroundDrawableResource(R.color.background_material_light_1);
 
@@ -81,6 +88,33 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
             }
         }, 3000);
 
+    }
+
+    @Override
+    public void onUpdateNeeded(final String updateUrl) {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("发现新版本")
+                .setMessage("请更新到最新版本.")
+                .setPositiveButton("更新",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                redirectStore(updateUrl);
+                            }
+                        }).setNegativeButton("稍后再更新",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).create();
+        dialog.show();
+    }
+
+    private void redirectStore(String updateUrl) {
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     public void onResume() {
@@ -187,19 +221,21 @@ public class MainActivity extends BaseActivity implements CardPickerDialog.Click
                         drawerLayout.closeDrawers();
 
                         break;
-//                    case 3:
+                    case 2:
+                        ForceUpdateChecker.with(MainActivity.this).onUpdateNeeded(MainActivity.this).check();
+                        drawerLayout.closeDrawers();
 //                        TimingFragment fragment3 = new TimingFragment();
 //                        fragment3.show(getSupportFragmentManager(), "timing");
 //                        drawerLayout.closeDrawers();
-//
-//                        break;
+
+                        break;
 //                    case 4:
 //                        BitSetFragment bfragment = new BitSetFragment();
 //                        bfragment.show(getSupportFragmentManager(), "bitset");
 //                        drawerLayout.closeDrawers();
 //
 //                        break;
-                    case 2:
+                    case 3:
                         if (MusicPlayer.isPlaying()) {
                             MusicPlayer.playOrPause();
                         }
