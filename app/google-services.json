@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "718742914071",
+    "firebase_url": "https://chinese-sermons.firebaseio.com",
+    "project_id": "chinese-sermons",
+    "storage_bucket": "chinese-sermons.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718742914071:android:ff802c1c8e9e4578",
+        "android_client_info": {
+          "package_name": "com.wm.fuyin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718742914071-8p00stef814kafjuqj69dmmvk44m9tf3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wm.fuyin",
+            "certificate_hash": "0721de13622cdfff85e987a43af6df85f36a4a7a"
+          }
+        },
+        {
+          "client_id": "718742914071-n78vl5f06teun9io9lufv9i4cjmksbtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4Ak1CI8UHKxI9HmZS-K4plraslLuCnIc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718742914071-n78vl5f06teun9io9lufv9i4cjmksbtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
