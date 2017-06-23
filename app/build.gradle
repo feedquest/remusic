@@ -15,8 +15,8 @@ android {
         applicationId "com.wm.fuyin"
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.04"
+        versionCode 5
+        versionName "1.0.5"
         //start
         renderscriptTargetApi 17
         renderscriptSupportModeEnabled true
